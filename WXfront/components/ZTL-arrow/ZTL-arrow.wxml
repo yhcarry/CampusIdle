@@ -1,0 +1,11 @@
+<!--components/ZTL-arrow/ZTL-arrow.wxml-->
+<!-- <view class="container"> -->
+
+    <view class="container" style="height:{{(menuButtonSizeInfo.height+menuButtonSizeInfo.top-statusBarHeight)*1.4}}px;width:100%;text-align:center;line-height:{{menuButtonSizeInfo.height+menuButtonSizeInfo.top-statusBarHeight}}px;padding-top:{{statusBarHeight}}px;background-color:#FFA107;font-size:medium;font-weight:500;font-family:Microsoft YaHei;color: #672D4E;display: flex;flex-direction: row;">
+<view class="arrow" bindtap="goback">
+<van-icon name="arrow-left" class="arrow"/>
+</view>
+<view class="text">
+{{title}}</view>
+</view>
+<!-- </view> -->

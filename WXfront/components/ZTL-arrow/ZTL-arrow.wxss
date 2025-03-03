@@ -1,0 +1,14 @@
+/* components/ZTL-arrow/ZTL-arrow.wxss */
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.arrow{
+    height:20rpx;
+    width:20rpx;
+    margin:10rpx;
+}
+.text{
+   padding-left:260rpx;
+}
