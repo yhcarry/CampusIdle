@@ -1,0 +1,78 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/publish/publish",
+    "pages/message/message",
+    "pages/user/user",
+    "pages/new/new",
+    "pages/display/display",
+    "pages/cart/cart",
+    "pages/settle/settle",
+    "pages/logs/logs",
+    "pages/searchList/searchList",
+    "pages/demand/demand",
+    "pages/chat/chat",
+    "pages/order/order",
+    "pages/myorder/myorder",
+    "pages/mycell/mycell",
+    "pages/information/information",
+    "pages/mypublish/mypublish",
+    "pages/editPublish/editPublish"
+
+  ],
+  "window":{
+    "navigationStyle": "custom"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "custom":true,
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "/images/tabs/home.png",
+        "selectedIconPath": "/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "/images/tabs/shoppedcar.png",
+        "selectedIconPath": "/images/tabs/shoppedcar2.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "/images/tabs/fabu.png",
+        "selectedIconPath": "/images/tabs/fabu2.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "/images/tabs/message.png",
+        "selectedIconPath": "/images/tabs/message-active.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/tabs/用户.png",
+        "selectedIconPath": "/images/tabs/用户2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-icon":"@vant/weapp/icon/index",
+     "van-cell-group": "@vant/weapp/cell-group/index",
+     "van-image": "@vant/weapp/image/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+     "my-collect":"/components/collect/collect",
+     "my-titleselfdefine":"/components/ZTLstyle/TEST",
+     "my-titlearrow":"/components/ZTL-arrow/ZTL-arrow"
+  }
+}
