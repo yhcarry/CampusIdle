@@ -1,0 +1,64 @@
+<!--pages/searchList/searchList.wxml-->
+<my-titlearrow title="搜索"></my-titlearrow>
+<view class="search">
+  <view class="searchItem">
+    <input class="input" focus="true" maxlength="10" bindinput="bindKeyInput" value='{{inputValue}}' placeholder="请输入关键词" bindconfirm="searchClick" />
+    <icon bindtap='activity_clear' type='clear' size="35rpx"></icon>
+  </view>
+
+  <button class="btn" bindtap="searchClick">
+  <!-- <icon type="search" size="35rpx"></icon> -->
+  <text> 搜索</text>
+  </button>
+</view>
+
+<!-- 搜索历史 -->
+<view class="history-box" hidden="{{ishidden}}">
+  <!-- 标题区域 -->
+  <view class="history-title">
+    <text>搜索历史</text>
+    <icon type="cancel" size="17" bindtap="clearHistory"></icon>
+  </view>
+  <!-- 列表区域 -->
+  <view class="history-list">
+    <view class="search-content">
+      <block>
+        <view class="search-item" wx:for="{{historyList}}" wx:key="index" data-text="{{item}}" bindtap="onClickHistoryItem">
+          {{item}}
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<image wx:for="{{shopList}}" data-product="{{item}}" style="display:none;" wx:key="*this" bindload="imgLoad" mode="widthFix" src="{{item.images[0]}}"></image>
+<view class="content">
+  <view class="left">
+    <navigator wx:for="{{lList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+            ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+
+
+  <view class="right">
+    <navigator wx:for="{{rList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+            ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+<!--pages/publish/publish.wxml-->
+<my-titleselfdefine/>
+<view class="myTaber2">
+  <view class="top">
+    <block wx:for="{{tabList}}" wx:key="*this">
+      <view class="{{state === item.index ? 'scroll_item active':'scroll_item'}}" bindtap="taberTop" data-state="{{item.index}}">{{item.name}}</view>
+    </block>
+  </view>
+
+  <scroll-view refresher-triggered='{{refreshState}}' refresher-enabled='{{true}}' bindrefresherrefresh='refresh' bindscrolltolower='toBottom' scroll-y='{{true}}'>
+    <view wx:if="{{state === 'publish'}}">
+      <form>
+        <view style="width:90%; align-items:center;padding-left:5%;padding-right: 5%;">
+          <van-cell title="类别选择" is-link bind:click="showPopup" style="margin: 10px;">
+            <view style="text-align: left;color: black;">{{array[index]}}</view>
+          </van-cell>
+        <!-- </view> -->
+        <van-popup round show="{{ show }}" position="bottom" custom-style="height: 50%;">
+          <van-picker show-toolbar title="分类" columns="{{array}}" bind:confirm="onConfirm" bind:cancel="onClose"></van-picker>
+        </van-popup>
+
+        <!-- <view style="width:90%; align-items:center;padding-left:5%;padding-right: 5%;"> -->
+          <van-cell-group style="width:90%; align-items:center;padding-left:5%;padding-right: 5%;">
+            <van-field label="商品名称" border="{{ false }}" bindinput="bindKeyInput1" value="{{inputValue1}}" placeholder="请输入商品名称" />
+            <van-field label="商品价格" border="{{ false }}" maxlength="10" bindinput="bindKeyInput2" value="{{inputValue2}}" placeholder="请输入商品价格（元）" />
+            <van-field label="商品数量" border="{{ false }}" maxlength="10" bindinput="bindKeyInput3" value="{{inputValue3}}" placeholder="请输入商品数量" />
+            <van-field label="联系方式" border="{{ false }}" maxlength="11" bindinput="bindKeyInput6" value="{{inputValue6}}" placeholder="请输入您的手机号"/>
+          <!-- </van-cell-group> -->
+          <!-- <van-cell-group style="margin: 20rpx 0"> -->
+            <van-field value="{{inputValue4}}" bindinput="bindKeyInput4" label="描述" type="textarea" placeholder="请输入对商品的描述" border="{{ false }}" custom-style="height:100px" />
+          </van-cell-group>
+        </view>
+      
+        <!-- 图片上传区域 -->
+        <view class="weui-uploader">
+          <view class="img_box">
+            <view class="imgs" wx:for="{{tempFilePaths}}" wx:key="index">
+              <image src='{{item}}' bindlongpress="deleteImage" bindtap="listenerButtonPreviewImage" data-index="{{index}}" mode='aspectFill' />
+            </view>
+            <view class="imgs">
+              <view class="images" bindtap="upload">
+                <!-- <image src='/images/tabs/tupiantianjia.png' mode='widthFix' /> -->
+                <van-icon name="plus" style="color:rgb(184, 180, 180);font-size:180rpx" class="plus"/>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="btn-area">
+          <button  bindtap="submit" style="margin: 10rpx 10 "type="primary" formType="submit">发布商品</button>
+        </view>
+      </form>
+    </view>
+
+
+    <view wx:if="{{state === 'need'}}">
+      <form>
+
+        <!-- <view style="width:90%; align-items:center;padding-left:5%;padding-right: 5%;"> -->
+          <van-cell-group style="width:90%; align-items:center;padding-left:5%;padding-right: 5%;">
+            <van-field value="{{inputValue5}}" bindinput="bindKeyInput5" label="描述" type="textarea" placeholder="请输入对商品的描述" border="{{ false }}" custom-style="height:100px" />
+          </van-cell-group>
+
+
+        <view class="btn-area2">
+          <button bindtap="submit1" style="margin: 30rpx 0" type="primary" formType="submit">求购商品</button>
+        </view>
+      </form>
+    </view>
+
+  </scroll-view>
+</view>
+<!-- 
+表单 -->

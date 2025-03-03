@@ -1,0 +1,39 @@
+<!--components/collect/collect.wxml-->
+<!-- 商品区 -->
+<!-- 通过 isTouchMove 的值来对应移动位置-->
+<my-titlearrow title="我的发布"></my-titlearrow>
+<view wx:if="{{dataList==false}}" class="note">暂时没有发布哦~~</view>
+<view else="{{dataList==true}}">
+<view class="shop">
+<view  wx:for="{{dataList}}" wx:key="index" class="shop-item">
+  <view class="content_">
+		<!-- <view class="title">
+			<view>订单编号：2018041729873019</view>
+			<text>交易成功</text>
+		</view> -->
+		<view class="card">
+			<view class="card-img">
+				<image src="{{item.images[0]}}" bindtap="gotoShop" data-sid="{{item.sid}}"></image>
+			</view>
+			<view class="card-text">
+				<view class="card-text_" bindtap="gotoShop" data-sid="{{item.sid}}">
+					<text>{{item.sname}}</text>
+					<view>
+						<view>￥{{item.price}}</view>
+						<text>x{{item.count}}</text>
+					</view>
+				</view>
+        <view class="button_">
+				<view class="card-button">
+          <button class="card-button-one"  bindtap="edit" data-id="{{item.sid}}" data-images="{{item.images}}">修改发布</button>
+				</view>
+        <view class="card-button">
+          <button class="card-button-one"  bindtap="delItem" data-id="{{item.sid}}" data-sname="{{item.sname}}" data-type="{{item.type}}">删除发布</button>
+				</view>
+      </view>
+			</view>
+		</view>
+  </view>
+</view>
+</view>
+</view>

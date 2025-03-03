@@ -1,0 +1,69 @@
+<!--pages/user/user.wxml-->
+<view style="height:{{(menuButtonSizeInfo.height+menuButtonSizeInfo.top-statusBarHeight)*1.4}}px;width:100%;text-align:center;line-height:{{menuButtonSizeInfo.height+menuButtonSizeInfo.top-statusBarHeight}}px;padding-top:{{statusBarHeight}}px;background-color:#82b4eee5;font-size:medium;font-family:Microsoft YaHei;color: #163442;font-weight:bolder"class="biaoti">闲来校园一置</view> 
+<image class="bg" src="cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/pexels-photo-1631677.png"></image>
+
+<view>
+    <view class="userinfo">
+    <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar" mode="cover" bindtap="goto"></image>
+    <view class="userinfo-nickname">{{userInfo.nickName}}</view>
+</view>
+    <!--分类 -->
+    <view class="total">
+    <navigator class="shoucang1" url="/components/collect/collect">
+        <view class="li3">收藏</view>
+    </navigator>
+    <navigator url="/pages/mycell/mycell">
+        <view class="li">我卖出的</view>
+    </navigator>
+    <navigator url="/pages/myorder/myorder">
+        <view class="li">我的订单</view>
+    </navigator>
+    <navigator url="/pages/mypublish/mypublish">
+        <view class="li">我的发布</view>
+    </navigator>
+    <view wx:if="{{islogin}}" bindtap="clearChaca">
+        <view class="li">退出登录</view>
+    </view>
+    <view wx:if="{{!islogin}}" bindtap="login">
+        <view class="li">立即登录</view>
+    </view>
+    <view class="li2" data-index="0" bindtap='goto'>
+        <view class="left">个人信息</view>
+    </view>
+
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <view class="userinfo">
+        <block wx:if="{{canIUseOpenData}}">
+            <view class="userinfo-avatar" bindtap="bindViewTap">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <open-data type="userNickName"></open-data>
+        </block>
+        <block wx:elif="{{!hasUserInfo}}">
+            <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" class="buttom">
+                <image mode="aspectFit" class="logn" src=" /images/tabs/登录.png"></image>
+                <text class="logn1">\n获取头像昵称</text>
+            </button>
+            <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+        </block>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+
+    <block wx:for="{{language}}" wx:key="index">
+        <view class='text-content'>{{item}}</view>
+    </block>

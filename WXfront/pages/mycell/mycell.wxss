@@ -1,0 +1,218 @@
+/* pages/myorder/myorder.wxss */
+.title{
+  width: 100%;
+  /* overflow: hidden; */
+  position: relative;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 999;
+}
+.flex-row{
+  flex-direction: row;
+  display: flex;
+}
+.onTabLine{
+  width: 157rpx;
+  height: 5rpx;
+  background-color:#4074DD;
+  margin-top:15rpx;
+}
+.line{
+  width: 750rpx;
+  height: 2rpx;
+  background-color: #F2F2F2;
+  margin: 0rpx auto 0 auto;
+}
+.order {
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.content_ {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .title {
+  width: 100%;
+  line-height: 30px;
+  justify-content: space-between;
+  border-bottom: 1px solid #f5f8f4;
+  padding: 0 20rpx;
+} */
+
+/* .title>view {
+  color: #666;
+}
+
+.title>text {
+  color: #fa9b4e;
+} */
+
+/* .bottom-title {
+  width: 100%;
+  text-align: right;
+  line-height: 40px;
+  background-color: #fff;
+  padding: 0 20rpx;
+} */
+
+.card {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1px;
+}
+
+.card-img {
+  height: 100px;
+  width: 100px;
+  padding: 7px 7px;
+}
+
+.card-img>image {
+  width: 86px;
+  height: 86px;
+}
+
+.card-text {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text_ {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-text_>text {
+  width: 80%;
+  padding-left: 20rpx;
+  color: #444;
+  font-weight: 600;
+  font-size: 12pt;
+}
+
+.card-text_>view {
+  padding-right: 20rpx;
+  width: 20%;
+  text-align: right;
+}
+
+.card-text_>view>view {
+  color: #444;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+
+.card-text_>view>text {
+  font-size: 9pt;
+  color: #999;
+}
+
+.card-button {
+  width: 100%;
+  line-height: 50px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30rpx;
+}
+
+.card-button>view {
+  background-color: #fff;
+  line-height: 25px;
+  width: 30%;
+  margin-left: 5rpx;
+  text-align: center;
+  border-radius: 15px;
+  border:1px solid#d6d6d6;
+  color: #444;
+  font-size: 9pt;
+}
+.shop{
+  margin-top:0px;
+  width:100%;
+}
+ .shop-item{
+  display: flex;
+  flex-direction: row;
+  padding: 15rpx;
+  height:110px;
+  width:86%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border: 1rpx solid #efefef;
+  border-radius: 8rpx;
+
+  margin:15rpx;
+  border-radius: 5%;
+  box-shadow: 1rpx 1rpx 15rpx #dddddd;
+}
+.card-button-one{
+  font-size: 11pt;
+  margin-left:0px;
+  letter-spacing:0;
+}
+.card-button-two{
+  font-size: 11pt;
+  margin-right:15px;
+  letter-spacing:0;
+}
+/*
+.thumb image{
+  width: 200rpx;
+  height:200rpx;
+  /* 两图片无间隙 */
+  /* display:block;
+  margin-left: 15rpx;
+  margin-right:40rpx;
+} */
+/* .info{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 34rpx;
+}
+.price{
+  margin-right:10px;
+}
+.describe{
+  font-size: 26rpx;
+  display:flex;
+  flex-direction: row;
+}  */
+.message,.notify{
+  display: flex;
+  flex-direction: row;
+  font-size:36rpx;
+  margin-top: 20rpx;
+  width: 120rpx;
+  color:#CDCDCD;
+ 
+}
+.message{
+  margin-left: 200rpx;
+}
+.notify{
+  margin-left: 150rpx;
+}
+.active{
+  color:#4074DD;
+}
+.selectTab{
+   /* 设置效果为“吸顶” */
+   position: sticky;
+   /* 吸顶的“位置” */
+   top: 0;
+  position: relative;
+  background-color: #fff;
+  z-index: 100;
+}

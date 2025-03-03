@@ -1,0 +1,56 @@
+<!--pages/new/new.wxml-->
+<my-titlearrow title="{{query.title}}"></my-titlearrow>
+<view class="search">
+  <view class="searchItem">
+    <input class="input" focus="true" maxlength="10" bindinput="bindKeyInput" value='{{inputValue}}' placeholder="请输入关键词" bindconfirm="searchClick" />
+    <icon bindtap='activity_clear' type='clear' size="35rpx"></icon>
+  </view>
+
+  <button class="btn" bindtap="searchClick">
+  <!-- <icon type="search" size="35rpx"></icon> -->
+  <text> 搜索</text>
+  </button>
+</view>
+
+<image wx:for="{{shopList}}" data-product="{{item}}" style="display:none;" wx:key="*this" bindload="imgLoad" mode="widthFix" src="{{item.images[0]}}"></image>
+<view class="content">
+  <view class="left">
+    <navigator wx:for="{{lList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+            ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+
+
+  <view class="right">
+    <navigator wx:for="{{rList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+            ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+</view>
+
+<!-- <navigator class="shop-item" wx:for="{{shopList}}" wx:key="id" url='/pages/display/display?sid={{item.sid}}'>
+    <view class="thumb">
+        <image src="{{item.images[0]}}"></image>
+    </view>
+    <view class="info">
+        <text>商品名称：{{item.sname}}</text>
+        <text>商品价格：{{item.price}}</text>
+        <text>商品数量：{{item.count}}</text>
+    </view>
+</navigator> -->

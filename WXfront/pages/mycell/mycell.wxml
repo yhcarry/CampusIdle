@@ -1,0 +1,73 @@
+<!--pages/mycell/mycell.wxml-->
+<!--pages/myorder/myorder.wxml-->
+<my-titlearrow title="我卖出的"></my-titlearrow>
+<view class='title'  catchtouchmove='true'>
+  <!-- 切换栏 -->
+<view class="selectTab"  catchtouchmove='true'>
+  <view class="flex-row">
+    <view class="message {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">
+    未完成
+    </view>
+    <view class="notify {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">
+    已完成
+    </view>
+  </view>
+  <view class='onTabLine' style="margin-left:{{175+currentTab*273}}rpx" catchtouchmove="ture"></view>
+  <view class='line'></view>
+</view>
+</view>
+
+<view class="shop">
+<view wx:if="{{currentTab==0}}" wx:for="{{orderList0}}" wx:key="index" class="shop-item">
+  <view class="content_">
+		<!-- <view class="title">
+			<view>订单编号：2018041729873019</view>
+			<text>交易成功</text>
+		</view> -->
+		<view class="card">
+			<view class="card-img" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+				<image src="{{item.shop.images[0]}}"></image>
+			</view>
+			<view class="card-text">
+				<view class="card-text_" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+					<text>{{item.shop.sname}}</text>
+					<view>
+						<view>￥{{item.price}}</view>
+						<text>x{{item.count}}</text>
+					</view>
+				</view>
+				<view class="card-button">
+          <button class="card-button-one" data-oid="{{item.oid}}"  bindtap="delete">取消订单</button>
+          <button class="card-button-two" data-oid="{{item.oid}}"  >待对方收货</button>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+
+<view wx:if="{{currentTab==1}}" wx:for="{{orderList1}}" wx:key="index" class="shop-item">
+  <view class="content_">
+		<!-- <view class="title">
+			<view>订单编号：2018041729873019</view>
+			<text>交易成功</text>
+		</view> -->
+		<view class="card" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+			<view class="card-img" >
+				<image src="{{item.shop.images[0]}}"></image>
+			</view>
+			<view class="card-text">
+				<view class="card-text_" >
+					<text>{{item.shop.sname}}</text>
+					<view>
+						<view>￥{{item.price}}</view>
+						<text>x{{item.count}}</text>
+					</view>
+				</view>
+				<view class="card-button">
+          <button class="card-button-two" data-oid="{{item.oid}}" >已完成收货</button>
+				</view>
+			</view>
+		</view>
+  </view>
+</view>
+</view>

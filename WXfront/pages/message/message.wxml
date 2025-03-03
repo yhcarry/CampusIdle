@@ -1,0 +1,101 @@
+<my-titleselfdefine/>
+<!--头部消息中心-->
+<view class='title'  catchtouchmove='true'>
+  <!-- 私信、通知切换栏 -->
+<view class="selectTab"  catchtouchmove='true'>
+  <view class="flex-row">
+    <view class="message {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">
+    私信
+    <!--气泡提示-->
+    <view class='bubble'>
+      <view class='num'>{{TaContentList.length}}</view>
+    </view>
+    </view>
+    <view class="notify {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">
+    通知
+    <!--气泡提示-->
+    <view  wx:if="{{orderCount>0}}"  class='bubble2'>
+      <view class='num'>{{orderCount}}</view>
+    </view>
+    </view>
+  </view>
+  <view class='onTabLine' style="margin-left:{{175+currentTab*273}}rpx" catchtouchmove="ture"></view>
+  <view class='line'></view>
+</view>
+</view>
+ 
+<!--私信消息列表-->
+<scroll-view scroll-y="true" class="message-list" style="margin-top:0px;height:1200rpx"  wx:if="{{currentTab==0}}" >
+  <view wx:for="{{array.ListCount}}" wx:key="index">
+  <!--用户-->
+  <view class='user' bindtap='goTocontactPage' data-text="{{TaContentList[item]}}">
+  <image class='header-icon' src='{{TaContentList[item].user.avatarUrl}}'></image>
+  <view class='user-content'>
+    <view class='firstline'>
+      <view class='apart'>
+      <view class='username'>
+        <text>{{TaContentList[item].user.username}}</text>
+      </view>
+      <view class='cooperation'>
+        <image src='./images/6.png'></image>
+      </view>
+      </view>
+      <view class='time'>
+        <view class='time-num'>{{TaContentList[item].createTime}}</view>
+      </view>
+    </view>
+    <view class='secondline'>
+      <view class='dialog'>
+      <text>{{TaContentList[item].content}}</text>
+      </view>
+      <view class='dialog-nums'>
+        <view class='bubble3'>
+          <view class='num'>{{array.UidCount[index]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+<!--分割线-->
+<view class='linecut'></view>
+</view>
+</scroll-view>
+<!--关注消息列表框-->
+<scroll-view scroll-y class="notify-list" style="margin-top:0px;height:1800rpx;"  wx:if="{{currentTab==1}}">
+  <!--系统通知-->
+  <view class='notify-type' bindtap='goToSystemPage'>
+    <view class='notify-icon'>
+      <van-icon name="comment-circle" style="font-size:45px; color: #f59319;" />
+    </view>
+    <view class='notify-name'>
+      系统通知
+      <view wx:if="{{orderCount>0}}" class='notify-num'>
+        <view class='nums'>{{orderCount}}</view>
+      </view>
+    </view>
+
+   
+    <view class='right'>
+      <!-- <image src=''></image> -->
+    </view>
+  </view>
+  <view class='liner'></view>
+
+<view class="kefu">
+  <view class='notify-icon'>
+      <van-icon name="manager" style="font-size:45px; color: #70b9f5;" />
+    </view>
+  <view class="li">
+        <button class="li" open-type='contact'>联系客服</button>
+    </view>
+  </view>
+  <view class='liner'></view>
+
+<!--底部消息提示框-->
+<view class="unread">
+  <text>您有{{orderCount}}条未读通知</text>
+</view>
+</scroll-view> 
+ 
+<!--底部导航-->
+<tabbar tabbar="{{tabbar}}"></tabbar> 

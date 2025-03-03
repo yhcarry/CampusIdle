@@ -1,0 +1,104 @@
+<!--pages/myorder/myorder.wxml-->
+<my-titlearrow title="我的订单"></my-titlearrow>
+<view class='title' catchtouchmove='true'>
+	<!-- 切换栏 -->
+	<view class="selectTab" catchtouchmove='true'>
+		<view class="flex-row">
+			<view class="message {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">
+				未完成
+			</view>
+			<view class="notify {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">
+				已完成
+			</view>
+		</view>
+		<view class='onTabLine' style="margin-left:{{175+currentTab*273}}rpx" catchtouchmove="ture"></view>
+		<view class='line'></view>
+	</view>
+</view>
+<view class="shop">
+	<view wx:if="{{currentTab==0}}" wx:for="{{orderList0}}" wx:key="index" class="shop-item">
+		<view class="content_">
+			<view class="card">
+				<view class="card-img" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+					<image src="{{item.shop.images[0]}}"></image>
+				</view>
+				<view class="card-text">
+					<view class="card-text_" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+						<text>{{item.shop.sname}}</text>
+						<view>
+							<view>￥{{item.price}}</view>
+							<text>x{{item.count}}</text>
+						</view>
+					</view>
+					<view class="card-button">
+						<button class="card-button-one" data-oid="{{item.oid}}" data-suid="{{item.suid}}" bindtap="delete">取消订单</button>
+						<button class="card-button-two" data-oid="{{item.oid}}" data-suid="{{item.suid}}" bindtap="confirm">确认收货</button>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view wx:if="{{currentTab==1}}" wx:for="{{orderList1}}" wx:key="index" class="shop-item">
+		<view class="content_">
+			<view class="card" >
+				<view class="card-img" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+					<image src="{{item.shop.images[0]}}"></image>
+				</view>
+				<view class="card-text">
+					<view class="card-text_" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+						<text>{{item.shop.sname}}</text>
+						<view>
+							<view>￥{{item.price}}</view>
+							<text>x{{item.count}}</text>
+						</view>
+					</view>
+					<view class="card-button">
+						<button class="card-button-one" data-oid="{{item.oid}}" bindtap='showBuyModal'>评价</button>
+						<!-- <button wx:if="{{item.starScore>0}}" class="card-button-one" data-oid="{{item.oid}}" bindtap='showBuyModal'>再次评价</button> -->
+						<button class="card-button-two" data-oid="{{item.oid}}">已完成收货</button>
+					</view>
+						<!-- 点击弹出遮罩层 -->
+						<view class="cover_screen" bindtap="hideBuyModal" wx:if="{{showModalStatus}}"></view>
+						<!-- 点击立即购买 弹窗 -->
+						<view animation="{{animationData}}" class="buy_box" wx:if="{{showModalStatus}}">
+							<view class='startitle'>{{tatle}}</view>
+							<!-- 星星start -->
+							<view class='container'>
+								<view class='evaluate_contant'>
+									<!-- 外层循环控制有几个评价条目 -->
+									<block wx:for='{{evaluate_contant}}' wx:key='' wx:for-index='idx'>
+										<view class='evaluate_item'>
+											<view class='evaluate_title'>{{staritem}}</view>
+											<!--星星评价 -->
+											<view class='evaluate_box'>
+												<!--内层循环展示每个评价条目的星星 -->
+												<block wx:for="{{stars}}" wx:key=''>
+													<image class="star-image" style="left: {{item*80}}rpx" src="{{scores[idx] > item ?normalSrc:selectedSrc}}">
+														<view class="staritem" data-score="{{item + 1}}" data-idx='{{idx}}' bindtap="selectRight"></view>
+													</image>
+												</block>
+											</view>
+
+										</view>
+									</block>
+									<view class="evaluation">{{evaluation}}</view>
+									<!-- <button class='sub_button' bindtap='submit_evaluate' type='primary'>提交</button> -->
+								</view>
+							</view>
+							<!-- 星星end -->
+							<view class="detail-btn">
+								<button class="done-person" style='border:4rpx solid #FF4A4A;background-color: #FFFFFF;font-weight: bold;color: #FF4A4A;font-size:28rpx;' bindtap='hideBuyModal' plain='{{plain}}'>取消</button>
+
+								<button class="done-person" style='border:none;background-color: #FF4A4A;font-weight: bold;color: #FFFFFF;font-size:28rpx;' bindtap='submit_evaluate' plain='{{plain}}' >提交</button>
+
+							</view>
+						</view>
+
+
+					
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,47 @@
+<!--pages/settle/settle.wxml-->
+<my-titlearrow title="提交订单"></my-titlearrow>
+<view class="box">
+    <view class=" iphone">
+        <!-- <view class="header">
+            <view class="title-1">确认订单</view>
+        </view> -->
+        <form class="form">
+            <view class="item" wx:for="{{shopList}}" wx:key="index">
+                <view class="card">
+                    <view class="image">
+                        <image src="{{item.images[0]}}"></image>
+                    </view>
+                    <view class="card_text">
+                        <text class="name">{{item.sname}}</text>
+                        <text class="remark">{{item.remark}}</text>
+                        <view class="text_num">
+                            <view class="price">￥{{item.price}}</view>
+                            <view class="count">✖{{item.selectCount}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        
+            <view>
+                <view>
+                    <view class="title-2">购物清单</view>
+                    <view class="goods">
+                        <view class="goods-buy" wx:for="{{shopList}}" wx:key="index">
+                            <view class="good">
+                                <text>{{item.sname}} ×{{item.selectCount}}</text>
+                                <text>{{item.selectCount*item.price}}</text>
+                            </view>
+                        </view>
+                        <view class="allgoods">
+                            <text>总计</text>
+                            <text>￥{{totalMoney}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view>
+                    <button class="button button-- full" bindtap="addOrder">提交订单</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

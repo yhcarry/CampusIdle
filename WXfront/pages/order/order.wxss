@@ -1,0 +1,116 @@
+
+page {
+  background-color: #eeeeee;
+}
+
+.order_shop {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  height: 380rpx;
+  width: 86%;
+  border: 1rpx solid #efefef;
+  margin: 15rpx;
+  border-radius: 0.5em;
+  box-shadow: 1rpx 1rpx 15rpx #dddddd;
+}
+
+.order_detail {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  height: auto;
+  width: 86%;
+  border: 1rpx solid #efefef;
+  margin: 15rpx;
+  border-radius: 0.5em;
+  box-shadow: 1rpx 1rpx 15rpx #dddddd;
+}
+.shop_detail{
+  display: flex;
+  flex-direction: row;
+}
+.shop_contact{
+  font-size: larger;
+  margin-top: 100rpx;
+}
+.line {
+  width: 650rpx;
+  height: 3rpx;
+  background-color: #eeeeee;
+  margin: 20rpx auto 30rpx auto;
+}
+
+.shop_img {
+  display: inline-block;
+  height: 240rpx;
+  overflow: hidden;
+  width: 320rpx;
+}
+.shop_text{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+  position: relative;
+}
+.name{
+  font-size: larger;
+}
+.describe{
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  	color: #999;
+
+  	height: 76rpx;
+  	/* 下面是网上给的片段*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.price{
+  position: absolute;
+  bottom: 0;
+}
+.order_text{
+  display: flex;
+  flex-direction: column;
+}
+
+.orderCode{
+  position: absolute;
+  right: 0;
+
+}
+.createTime{
+  position: absolute;
+  right: 0;
+}
+.status{
+  position: absolute;
+  right: 0;
+}
+.order_Info{
+  position: relative;
+  margin: 20rpx 0;
+}
+.contact_user{
+  margin-top: 40rpx;
+  align-items: center;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.phone_icon{
+  position: absolute;
+  top: 2rpx;
+  right: 10rpx;
+}
+.contact{
+  background-color: #dddddd;
+  font-size: 40rpx;
+}

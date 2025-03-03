@@ -1,0 +1,48 @@
+<!--pages/order/order.wxml-->
+<my-titlearrow title="订单详情"></my-titlearrow>
+<!-- 订单 -->
+
+
+<!-- 商品栏 -->
+<view class="order_shop">
+  <view class="shop_xinxi">商品信息</view>
+  <view class='line'></view>
+  <view class="shop_detail">
+    <image class="shop_img" src="{{order.shop.images[0]}}" bindtap="gotoShop" data-sid="{{order.sid}}"></image>
+    <view class="shop_text">
+      <text class="name">{{order.shop.sname}}</text>
+      <text class="describe">{{order.shop.remark}}</text>
+      <text class="price">￥{{order.shop.price}}</text>
+    </view>
+  </view>
+</view>
+
+<!-- 信息栏 -->
+<view class="order_detail">
+  <view class="order_xinxi">订单信息</view>
+  <view class='line'></view>
+  <view class="order_text">
+    <view class="order_Info">
+      <text>订单编号</text>
+      <text class="orderCode">{{order.orderCode}}</text>
+    </view>
+    <view class="order_Info">
+      <text>下单时间</text>
+      <text class="createTime">{{order.createTime}}</text>
+    </view>
+    <view class="order_Info">
+      <text>进度</text>
+      <text class="status" wx:if="{{order.status===1}}">订单已完成</text>
+      <text class="status" wx:if="{{order.status===0}}">正在进行中</text>
+    </view>
+    <view class="order_Info" wx:if="{{order.status===1}}">
+      <text>完成时间</text>
+      <text class="status">{{order.finishTime}}</text>
+    </view>
+    <view class="contact_user">
+      <view wx:if="{{uid===order.uid}}" bindtap="gotoContact" data-uid="{{order.suid}}" class="contact">联系商家</view>
+      <view wx:if="{{uid===order.suid}}" bindtap="gotoContact" data-uid="{{order.uid}}" class="contact">联系客户</view>
+      <view class="phone_icon" bindtap="call"><van-icon name="phone-circle-o" size="30px"/></view>
+    </view>
+  </view>
+</view>
