@@ -1,0 +1,50 @@
+<!--pages/chart/chart.wxml-->
+
+<!-- <view class='page_bg' wx:if='{{block}}' bindtap='hide_bg' />
+<view class='btn_bg' wx:if='{{block}}'>
+  <view wx:for="{{link_list}}" wx:key='index'>
+    <button class="sp_tit" id='{{index}}' bindtap='list_item'>查看详情 {{item}} </button>
+  </view>
+</view> -->
+
+<my-titlearrow title="{{usernickName}}"></my-titlearrow>
+
+<scroll-view class="history" scroll-y="true" scroll-with-animation scroll-top="{{scrollTop}}" >
+  <view class="content-Item" wx:key="index" wx:for="{{ContentList}}" wx:for-item="item">
+
+  <view class="time">{{item.createTime}}</view>
+    <!-- <view class='my_right' wx:if="{{item.sendId==uid}}"> -->
+    <view class="user" wx:if="{{item.sendId==receiveId}}">
+    <view>
+      <image class='my_img' src='{{useravatarUrl}}' bindtap="gotoInfo" data-uid="{{item.sendId}}"></image>
+    </view>
+      <view class='new_img' style="height:{{item.height*2.4}}rpx;" >
+        <text class='new_txt1' id="content_height{{index}}">{{item.content}}</text>
+      </view>
+    </view>
+    <view class='my_right' wx:if="{{item.sendId==uid}}">
+      <view class="new_img1" style="height:{{item.height*2.4}}rpx;">
+          <view class='new_txt2' id="content_height{{index}}" >{{item.content}}</view>
+      </view>
+      <view>
+        <image class='my_img1' src='{{myavatarUrl}}' bindtap="gotoInfo" data-uid="{{item.sendId}}"></image>
+      </view>
+    </view>
+
+  </view>
+
+
+</scroll-view>
+<!-- <view class='tab tab_1' bindtap='phone_click'>人工客服</view>
+<view class='tab tab_2'>切换账号</view> -->
+<view class="sendmessage">
+  <!-- <image class='voice_icon' bindtap='addImg' src='/images/jia_img.png'></image> -->
+  <!-- <van-icon name="photograph" style="font-size:45rpx;" bindtap="upimg"/> -->
+  <block wx:if='{{!addImg}}'>
+    <input type="text" bindinput="bindKeyInput" value='{{inputValue}}' confirm-type="done" placeholder="" />
+    <button bindtap="submitTo" class='user_input_text'>发送</button>
+  </block>
+  <!-- <block wx:if='{{addImg}}'>
+    <view class='voice_ing' bindtap="upimg">发送图片</view> 
+  </block> -->
+</view>

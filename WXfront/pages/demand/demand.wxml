@@ -1,0 +1,35 @@
+<!--pages/demand/demand.wxml-->
+<!--pages/demand/demand.wxml-->
+<my-titlearrow title="求购专区"></my-titlearrow>
+<view class="search">
+  <view class="searchItem">
+    <input class="input" focus="true" maxlength="10" bindinput="bindKeyInput" value='{{inputValue}}' placeholder="请输入关键词" bindconfirm="searchClick" />
+    <icon bindtap='activity_clear' type='clear' size="35rpx"></icon>
+  </view>
+
+  
+  <button class="btn" bindtap="searchClick">
+  <!-- <icon type="search" size="35rpx"></icon> -->
+  <text> 搜索</text>
+  </button>
+</view>
+
+<view wx:for="{{list.records}}" wx:key="list">
+  <navigator  open-type="navigate" bindtap="goTocontactPage" data-text="{{item}}" class="border">
+    <image src="{{item.user.avatarUrl}}" class="image"></image>
+    <view class="buju">
+    <view class="title">{{item.described}}</view>
+    <view class="pic">
+      <view class="info">
+        <view class="desc">
+          <text>{{item.createTime}}</text>
+          <text>楼主：{{item.user.username}}</text>
+        </view>
+          </view>
+          <view class="opr">
+        </view>
+      </view>
+    </view>
+    <!-- <view class="hr"></view> -->
+  </navigator>
+</view>

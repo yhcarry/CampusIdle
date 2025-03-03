@@ -1,0 +1,6 @@
+{"usingComponents": {
+    "my-search":"/components/search/search",
+    "my-collect":"/components/collect/collect"
+  },
+  "onReachBottomDistance": 200
+}

@@ -1,0 +1,71 @@
+<!--pages/home/home.wxml-->
+<!-- 使用自定义的搜索组件 -->
+<my-titleselfdefine/>
+<view class="search-box">
+  <my-search id="search"></my-search>
+</view>
+
+<!-- 6宫格区 -->
+<view class="grid-list">
+  <navigator class="grid-item" wx:for="{{gridList}}" wx:key="id" url="{{item.url}}?&title={{item.name}}&flag=true">
+    <image src="{{item.icon}}" />
+    <text>{{item.name}}</text>
+  </navigator>
+</view>
+
+<image wx:for="{{shopList}}" data-product="{{item}}" style="display:none;" wx:key="*this" bindload="imgLoad" mode="widthFix" src="{{item.images[0]}}"></image>
+<view class="content">
+  <view class="left">
+    <navigator wx:for="{{lList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+          ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+
+
+  <view class="right">
+    <navigator wx:for="{{rList}}" wx:key="*this" class="product-item" url='/pages/display/display?sid={{item.sid}}'>
+        <view class="product-img">
+          <image mode="widthFix" src="{{item.images[0]}}"></image>
+        </view>
+        <view class="product-title">
+          {{item.sname}}
+        </view>
+        <view class="product-price">
+          ￥{{item.price}}
+        </view>
+    </navigator>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+<!-- 商品区 -->
+<!-- <view class="shopList">
+<view class="title_text" style="text-align: center;">
+<view class="aa"> 所有商品 </view>
+</view>
+<navigator class="shop-item" wx:for="{{shopList}}" wx:key="index" url='/pages/display/display?sid={{item.sid}}'>
+  <view class="thumb">
+    <image class="thumb" src="{{item.images[0]}}"></image>
+  </view>
+  <view class="info">
+    <text>商品名称：{{item.sname}}</text>
+    <text>商品价格：{{item.price}}</text>
+    <text>商品数量：{{item.count}}</text>
+  </view>
+</navigator>
+</view> -->

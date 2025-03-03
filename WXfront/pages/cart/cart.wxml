@@ -1,0 +1,47 @@
+<my-titleselfdefine/>
+<view wx:if="{{isCart==true}}" class="content">购物车里还没有数据哦~</view>
+<view wx:else="{{isCart==false}}">
+  <!-- <>购物车列表 -->
+  <!-- <>购物车列表 -->
+  <view class="carts-list">
+    <view wx:for="{{shopList}}" class="carts-item" wx:key='id' wx:item='item'>
+      <!-- //复选框 -->
+      <view class="carts-radio">
+        <image class="carts-select" bindtap="bindCheckbox" data-index="{{index}}" src="{{item.isSelect?'cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/select.png':'cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/unselect.png'}}" />
+      </view>  
+      <!-- //商品信息 -->  
+      <navigator class="carts-cnt" url='/pages/display/display?sid={{item.sid}}'>
+        <image class="carts-image" src="{{item.images[0]}}" mode="aspectFill" />
+        <view class="carts-info">
+          <view class="carts-title clamp2">{{item.sname}}</view>
+          <text class="carts-title clamp2">库存：{{item.count}}</text>
+          <view class="carts-subtitle">
+            <text class="carts-price c--f60">￥{{item.price}}</text>
+          </view>
+        </view>
+      </navigator>
+      <!-- //数量加减 -->  
+      <view class="carts-num">
+          <text class="minus"  bindtap="bindMinus" data-index='{{index}}'>-</text>
+          <input type="number"  bindinput="bindIptCartNum" data-index='{{index}}' value="{{item.selectCount}}" />
+          <text class="plus normal" data-index='{{index}}' bindtap="bindPlus">+</text>
+      </view>
+      
+      <!-- //删除 -->  
+      <icon class="carts-del" type="clear" size="16" color="#ccc" data-index="{{index}}" bindtap="delete" />
+    </view>
+  </view>
+ <view class="carts-footer">  
+    <view class="bottomfixed">  
+      <view class="inner">  
+        <view class="chkAll" bindtap="bindSelectAll">
+        <image class="allselect" src="{{selectAllStatus?'cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/select.png':'cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/unselect.png'}}" /> 
+          <text>全选</text>  
+        </view>  
+        <view class="total">合计：<em>￥{{totalMoney}}</em></view>  
+        <view wx:if="{{totalCount != 0}}" class="btn-pay" bindtap='bindjiesuan'>去结算({{totalCount}})</view>   
+      <view wx:else class="btn-pay disabled">去结算({{totalCount}})</view> 
+      </view>  
+    </view>  
+  </view>
+  </view>

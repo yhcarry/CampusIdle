@@ -1,0 +1,117 @@
+<!--pages/information/information.wxml-->
+<my-titlearrow title="个人信息"></my-titlearrow>
+<view class="color">
+  <view class="userinfo">
+    <image src="{{user.avatarUrl}}" class="userinfo-avatar" mode="cover"></image>
+    <view class="userinfo-nickname">{{user.username}}</view>
+  </view>
+  <!-- 商品栏 -->
+  <view class="card">
+    <view class="order_shop">
+      <view class="shop_xinxi">个人信息</view>
+
+      <view class="message">
+        <view class="goods_message">
+          <view> 手机号：{{inputPhone}}</view>
+          <view><text class="iconfont icon-arrowright"></text></view>
+          <view wx:if="{{''+uid===query.uid}}" class="edit_phone"><view bindtap="editPhone" data-edit="phone">编辑</view></view>
+        </view>
+      </view>
+
+      <view class="message">
+        <view class="goods_message">
+          <view> qq：{{inputQQ}}</view>
+          <view><text class="iconfont icon-arrowright"></text></view>
+          <view wx:if="{{''+uid===query.uid}}" class="edit_qq"><view bindtap="editQQ" data-edit="qq">编辑</view></view>
+        </view>
+      </view>
+
+
+      <view class="message">
+        <view class="goods_message">
+          <view class="Praise_rate"> 好评率：
+            <!-- <view>一:显示后台给的评分</view> -->
+            <view wx:if="{{one_1!=0}}" style="display: flex; flex-direction: row; width:400rpx;height:80rpx">
+              <block wx:for="{{one_1}}">
+                <image src='cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/评级.png' class="image"></image>
+              </block>
+              <block wx:for="{{two_1}}">
+                <image src='cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/未收藏.png' class="image"></image>
+              </block>
+            </view>
+            <text wx:else>暂无评级</text>
+          </view>
+
+          <view><text class="iconfont icon-arrowright"></text></view>
+        </view>
+      </view>
+<!--       
+      <text wx:if="{{''+uid===query.uid}}" class="text">----------已售商品----------</text>
+      <text wx:if="{{''+uid!==query.uid}}" class="text">----------商家已售商品----------</text> -->
+    </view>
+  </view>
+</view>
+
+<!-- 商品栏 -->
+<view class="shop_List">
+<view wx:for="{{orderList1}}" wx:key="index" class="shop-item">
+  <view class="card3">
+    <view class="order_shop2">
+      <view class="content_">
+        <view class="card" bindtap="gotoOrderDetail" data-oid="{{item.oid}}">
+          <view class="card-img">
+            <image src="{{item.shop.images[0]}}"></image>
+          </view>
+          <view class="card-text">
+            <view class="card-text_">
+              <text>{{item.shop.sname}}</text>
+              <view>
+                <view>￥{{item.price}}</view>
+                <text>x{{item.count}}</text>
+              </view>
+            </view>
+
+            <!-- <view>一:显示后台给的评分</view> -->
+            <view style="display: flex; flex-direction: row; width:400rpx;height:80rpx">
+              <block wx:if="{{item.starScore==0}}">
+                <text>暂无评级</text>
+              </block>
+              <block wx:else>
+              <block  wx:for="{{item.starScore}}">
+                <image src='cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/评级.png' class="image"></image>
+              </block>
+              <block wx:for="{{5-item.starScore}}">
+                <image src='cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/未收藏.png' class="image"></image>
+              </block>
+            </block>
+              
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<!-- </view> -->
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view wx:if="{{editType=='phone'}}" class="modal-title">编辑手机号</view>
+  <view wx:if="{{editType=='qq'}}" class="modal-title">编辑qq号</view>
+  <view class="modal-content">
+    <view wx:if="{{editType=='phone'}}" class="modal-input">
+      <input placeholder-class="input-holder" type="number" maxlength="11" value="{{inputPhone}}" bindinput="inputChange1" class="input" placeholder="请输入数量"></input>
+    </view>
+    <view wx:if="{{editType=='qq'}}" class="modal-input">
+      <input placeholder-class="input-holder" type="number" maxlength="10" value="{{inputQQ}}" bindinput="inputChange2" class="input" placeholder="请输入数量"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view wx:if="{{editType=='phone'}}" class="btn-confirm" bindtap="onConfirm1" data-status="confirm">确定</view>
+    <view wx:if="{{editType=='qq'}}" class="btn-confirm" bindtap="onConfirm2" data-status="confirm">确定</view>
+  </view>
+</view>

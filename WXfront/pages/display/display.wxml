@@ -1,0 +1,46 @@
+<!--pages/display/display.wxml-->
+<!--pages/display/display.wxml-->
+<my-titlearrow title="商品详情"></my-titlearrow>
+<swiper class="thumb" circular autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper-item class="thumb" wx:for="{{images}}" wx:for-index="id">
+        <image src="{{images[id]}}"></image>
+    </swiper-item>
+</swiper>
+
+<!--商品详情-->
+<view class="goods_content">
+    <view class="content">
+        <view class="goods_title">{{sname}}</view>
+        <view class="goods_brief">{{remark}}</view>
+        <view class="goods_price">￥{{price}}</view>
+    </view>
+    <view class="share">
+       <!-- <view class="share2"> -->
+        <button open-type="share" class="fenxiang" > <image class="sha" src='cloud://cloud1-3gybjakse2e4eef5.636c-cloud1-3gybjakse2e4eef5-1310443580/Photo/分享.png'></image></button>
+    </view>
+</view>
+<view class="message">
+    <view class="goods_message">
+        <view>库存 × {{count}}</view>
+        <view class="phone_icon" bindtap="call"><van-icon name="phone-circle-o" size="30px"/></view>
+    </view>
+</view>
+ 
+ 
+<!--底部导航-->
+<view class="footer_nav">
+    <view class="nav_list" bindtap="go1">
+        <!-- <image class="icon-store_refund" type="search" src='/images/tabs/home.png'></image> -->
+        <van-icon name="wap-home-o" style="font-size:45rpx"/>
+        <view class="nav_name" >首页</view>
+    </view>
+    <view class="nav_list" bindtap="collect">
+        <!-- <image class="icon-star" src='/images/tabs/未收藏.png'></image> -->
+        <image class="icon-star" src='{{url1}}'></image>
+        <!-- <van-icon name="star-o" style="font-size:45rpx"/> -->
+        <view class="nav_name" >收藏</view>
+    </view>
+
+    <view class="add_cart goods_buy" bindtap="cart">加入购物车</view>
+    <view class="now_buy goods_buy" bindtap="gotoContact">联系商家</view>
+</view>
